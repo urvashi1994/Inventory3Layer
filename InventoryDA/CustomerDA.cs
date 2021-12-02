@@ -1,0 +1,36 @@
+﻿using InventoryBO;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InventoryDA
+{
+    public class CustomerDA
+    {
+        SqlConnection _sqlconnection = new SqlConnection(ConfigurationManager.ConnectionStrings["InventoryConn"].ConnectionString);
+
+        public int InsertCustomer(CustomerBO customer)
+        {
+            try
+            {
+                string query = $"INSERT INTO customer (customer_id, cust_name, city, grade, salesman_id) VALUES ({customer.CustomerId},'{customer.name}','{customer.city}',{customer.grade},{customer.SalesmanId});";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch(Exception ex)
+            {
+               // string msg = "Error: ";
+               // msg += ex.Message;
+               //throw new Exception(msg);
+                return 0;
+            }
+        }
+    }
+}
