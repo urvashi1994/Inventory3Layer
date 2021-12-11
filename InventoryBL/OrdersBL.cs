@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InventoryBL
 {
-   public class OrdersBL
+    public class OrdersBL
     {
         public int InsertNewOrder(OrdersBO NewOrders)
         {
@@ -21,7 +21,35 @@ namespace InventoryBL
             {
                 return 0;
             }
-           
         }
+
+        public int UpdateOrdersInfo(OrdersBO newOrder)
+        {
+            try
+            {
+                OrdersDA order = new OrdersDA();
+                return order.UpdateOrder(newOrder);
+            }
+
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int DeleteOrdersInfo(OrdersBO newOrder)
+        {
+            try
+            {
+                OrdersDA order = new OrdersDA();
+                return order.DeleteOrder(newOrder);
+            }
+
+            catch
+            {
+                return 0;
+            }
+        }
+
     }
 }

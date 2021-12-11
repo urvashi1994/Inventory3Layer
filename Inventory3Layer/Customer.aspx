@@ -1,16 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="Inventory3Layer.Customer" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Inventory.Master" AutoEventWireup="true" CodeBehind="Customer.aspx.cs" Inherits="Inventory3Layer.Customer" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div style="margin: 0px auto; padding-left: 370px; padding-right: 30px; overflow: auto;">
-            <div>
-                <table width="50%">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<h2>Orders</h2>
+    <br />
+              <table width="50%">
                     <tr>
                         <td colspan="2" style="background-color: Green; height: 30px; color: White;" align="center">Customer Registration  
                         </td>
@@ -51,9 +46,6 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>
-    </form>
+    
     <asp:Label ID="lblResult" runat="server" Text=""></asp:Label>
-</body>
-</html>
+                </asp:Content>

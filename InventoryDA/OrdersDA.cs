@@ -30,5 +30,41 @@ namespace InventoryDA
             }
            
         }
+
+        public int UpdateOrder(OrdersBO order)
+        {
+
+            try
+            {
+                string query = $"update orders set purch_amt = {order.PurchAmt}, ord_date = '{order.OrderDate}', customer_id = {order.CustomerId}, salesman_id = {order.SalesmanId} where order_no = {order.OrderNo};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int DeleteOrder(OrdersBO order)
+        {
+
+            try
+            {
+                string query = $"delete from orders where order_no = {order.OrderNo};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }
