@@ -24,15 +24,52 @@ namespace InventoryDA
                 cmd.Dispose();
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               // string msg = "Error: ";
-               // msg += ex.Message;
-               //throw new Exception(msg);
+                // string msg = "Error: ";
+                // msg += ex.Message;
+                //throw new Exception(msg);
                 return 0;
             }
         }
 
-      
+        public int UpdateCustomer(CustomerBO customer)
+        {
+            try
+            {
+                string query = $"Update customer SET cust_name ='{customer.name}', city = '{customer.city}', grade = {customer.grade}, salesman_id = {customer.SalesmanId} where customer_id = {customer.CustomerId};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch 
+            {
+                // string msg = "Error: ";
+                // msg += ex.Message;
+                //throw new Exception(msg);
+                return 0;
+
+            }
+        }
+
+        public int DeleteCustomer(CustomerBO customer)
+        {
+
+            try
+            {
+                string query = $"delete from customer where customer_id = {customer.CustomerId};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }

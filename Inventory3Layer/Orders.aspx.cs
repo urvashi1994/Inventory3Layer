@@ -13,7 +13,10 @@ namespace Inventory3Layer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
         }
 
         protected void BtnSave_Click(object sender, EventArgs e)
@@ -53,7 +56,6 @@ namespace Inventory3Layer
 
             try
             {
-
 
                 int result;
                 OrdersBO NewOrders = new OrdersBO()

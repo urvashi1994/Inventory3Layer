@@ -7,6 +7,13 @@
 
  <table width="50%">
 
+                    
+                     <tr>
+                        <td colspan="2" style="background-color: Green; height: 30px; color: White;" align="center">Orders 
+                         
+                        </td>
+                    </tr>
+                    
                     <tr>
                         <td>Order Number </td>
                         <td>
@@ -19,6 +26,7 @@
                         <td>
                             <asp:TextBox ID="txtpurch_amt" Width="150px" runat="server"></asp:TextBox>
                         </td>
+                        
                     </tr>
                     <tr>
                         <td>Order Date</td>

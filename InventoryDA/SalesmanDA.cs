@@ -30,5 +30,44 @@ namespace InventoryDA
             }
         }
 
+        public int UpdateSalesman(SalesmanBO salesman)
+        {
+
+            try
+            {
+                string query = $"Update salesman SET name = '{salesman.Name}', city = '{salesman.City}', commission = {salesman.Commission} where salesman_id = {salesman.SalesmanId};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int DeleteSalesman(SalesmanBO salesman)
+        {
+
+            try
+            {
+                string query = $"delete from salesman where salesman_id = {salesman.SalesmanId};";
+                SqlCommand cmd = new SqlCommand(query, _sqlconnection);
+                _sqlconnection.Open();
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+
+
+
     }
 }

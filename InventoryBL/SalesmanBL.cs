@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace InventoryBL
 {
-   public class SalesmanBL
-    {      
+    public class SalesmanBL
+    {
         public int InsertNewSalesman(SalesmanBO newSalesman)
         {
             try
@@ -20,7 +20,33 @@ namespace InventoryBL
             catch
             {
                 return 0;
-            }       
+            }
+        }
+
+        public int UpdateSalesmanInfo(SalesmanBO newSalesman)
+        {
+            try
+            {
+                SalesmanDA salesman = new SalesmanDA();
+                return salesman.UpdateSalesman(newSalesman);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int DeleteSalesmanInfo(SalesmanBO newSalesman)
+        {
+            try
+            {
+                SalesmanDA salesman = new SalesmanDA();
+                return salesman.DeleteSalesman(newSalesman);
+            }
+            catch
+            {
+                return 0;
+            }
         }
     }
 }

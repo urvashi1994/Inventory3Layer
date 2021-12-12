@@ -40,6 +40,7 @@ namespace Inventory3Layer
 
             if (result > 0)
             {
+                lblResult.ForeColor = System.Drawing.Color.Green;
                 lblResult.Text = "Record has been successfully inserted!!!";
                 ClearFields();
             }
@@ -53,6 +54,66 @@ namespace Inventory3Layer
             txtgrade.Text = "";
             txtsalesman_id.Text = "";
             txtcust_id.Focus();
-        }   
+        }
+
+
+        protected void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int result;
+                CustomerBO NewCustomer = new CustomerBO()
+                {
+                    CustomerId = Convert.ToInt32(txtcust_id.Text),
+                    name = txtcust_name.Text,
+                    city = txtcity.Text,
+                    grade = Convert.ToInt32(txtgrade.Text),
+                    SalesmanId = Convert.ToInt32(txtsalesman_id.Text)
+                };
+
+
+                CustomerBL logic = new CustomerBL();
+                result = logic.UpdateCustomerInfo(NewCustomer);
+
+                if (result > 0)
+                {
+                    lblResult.ForeColor = System.Drawing.Color.Green;
+                    lblResult.Text = "Record has been successfully Updated!!!";
+                    ClearFields();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int result;
+                CustomerBO newCustomer = new CustomerBO()
+                {
+                    CustomerId = Convert.ToInt32(txtcust_id.Text),
+                    
+                };
+
+
+                CustomerBL logic = new CustomerBL();
+                result = logic.DeleteCustomerInfo(newCustomer);
+
+                if (result > 0)
+                {
+                    lblResult.ForeColor = System.Drawing.Color.Green;
+                    lblResult.Text = "Record has been successfully Deleted!!!";
+                    ClearFields();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

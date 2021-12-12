@@ -48,5 +48,62 @@ namespace Inventory3Layer
             txtcommission.Text = "";
             txtsalesman_id.Focus();
         }
+
+        protected void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int result;
+                SalesmanBO newSalesman = new SalesmanBO()
+                {
+                    SalesmanId = Convert.ToInt32(txtsalesman_id.Text),
+                    Name = txtsalesman_name.Text,
+                    City = txtcity.Text,
+                    Commission = float.Parse(txtcommission.Text)
+                };
+
+                SalesmanBL logic = new SalesmanBL();
+                result = logic.UpdateSalesmanInfo (newSalesman);
+
+                if (result > 0)
+                {
+                    lblResult.ForeColor = System.Drawing.Color.Green;
+                    lblResult.Text = "Record has been successfully Updated!!!";
+                    clearfields();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        protected void BtnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int result;
+                SalesmanBO newSalesman = new SalesmanBO()
+                {
+                    SalesmanId = Convert.ToInt32(txtsalesman_id.Text),
+
+                };
+
+                SalesmanBL logic = new SalesmanBL();
+                result = logic.DeleteSalesmanInfo(newSalesman);
+
+                if (result > 0)
+                {
+                    lblResult.ForeColor = System.Drawing.Color.Green;
+                    lblResult.Text = "Record has been successfully Deleted!!!";
+                    clearfields();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -22,6 +22,32 @@ namespace InventoryBL
             {
                 return 0;
             }
-        }   
+        }
+
+        public int UpdateCustomerInfo(CustomerBO newCustomer)
+        {
+            try
+            {
+                CustomerDA customer = new CustomerDA();
+                return customer.UpdateCustomer(newCustomer);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public int DeleteCustomerInfo(CustomerBO newCustomer)
+        {
+            try
+            {
+                CustomerDA customer = new CustomerDA();
+                return customer.DeleteCustomer(newCustomer);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
     }
 }
